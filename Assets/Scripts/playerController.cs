@@ -13,6 +13,10 @@ public class playerController : MonoBehaviour
     public bool isFaking;
 
 
+    //players sword
+    public GameObject playersSword;
+
+
     // Start is called before the first frame update
     void Start()
     {
