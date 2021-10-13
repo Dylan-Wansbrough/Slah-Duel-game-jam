@@ -21,12 +21,17 @@ public class playerController : MonoBehaviour
     private float time;
     private float aniamtionTime; //how long the anaimation lasts for
 
+    //timings
     private float timeSincePress;
     private float pressWindow = 0.3f; //time to double tap attack
     private float cooldown;
     private float blockWindow; //the time the other player is allowed to block
 
     private string[] keypressed = new string[2];
+
+    //player life
+    public float timesHit;
+    public bool isDead;
 
 
     // Start is called before the first frame update
@@ -52,6 +57,8 @@ public class playerController : MonoBehaviour
 
         time += Time.deltaTime;
 
+        if (!isDead)
+        {
             if (time > cooldown) //recently attacked
             {
                 if (Input.GetKeyDown(keypressed[1]))
@@ -88,7 +95,7 @@ public class playerController : MonoBehaviour
             //Attacking the other player
             if (isAttacking)
             {
-                if(time > blockWindow)
+                if (time > blockWindow)
                 {
                     if (OtherPlayer.GetComponent<playerController>().isBlocking)
                     {
@@ -104,23 +111,25 @@ public class playerController : MonoBehaviour
                         cooldown = time + 1f;
                         OtherPlayer.GetComponent<playerController>().isHit = true;
                         OtherPlayer.GetComponent<playerController>().cooldown = cooldown;
-                    OtherPlayer.GetComponent<playerController>().aniamtionTime = time + 0.9f;
+                        OtherPlayer.GetComponent<playerController>().timesHit += 1;
+                        OtherPlayer.GetComponent<playerController>().aniamtionTime = time + 0.9f;
                     }
                 }
             }
-        
-        //if the other player is stunned all CD are reset to allow for counter attack
-        if(OtherPlayer.GetComponent<playerController>().isStunned){
-            cooldown = 0;
-        }
 
-        if (isHit)
-        {
-            m_SpriteRenderer.sprite = sprites[5];
-        }
+            //if the other player is stunned all CD are reset to allow for counter attack
+            if (OtherPlayer.GetComponent<playerController>().isStunned)
+            {
+                cooldown = 0;
+            }
+
+            if (isHit)
+            {
+                m_SpriteRenderer.sprite = sprites[5];
+            }
 
             //resetting
-        if (time > aniamtionTime)
+            if (time > aniamtionTime)
             {
                 m_SpriteRenderer.sprite = sprites[0];
                 isBlocking = false;
@@ -130,6 +139,17 @@ public class playerController : MonoBehaviour
                 isHit = false;
             }
 
-      
+            if(timesHit > 4)
+            {
+                isDead = true;
+            }
+
+
+        }
+        else
+        {
+
+        }
     }
+            
 }
