@@ -524,7 +524,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 420}
-  m_SizeDelta: {x: 858.9, y: 162.9}
+  m_SizeDelta: {x: 870.77, y: 162.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &521433217
 MonoBehaviour:
@@ -548,8 +548,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Slash Duel
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2e60326eeda12aa479d7455473db43bd, type: 2}
-  m_sharedMaterial: {fileID: 1347563770689819935, guid: 2e60326eeda12aa479d7455473db43bd, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9faa8f265f950694781066688080b03a, type: 2}
+  m_sharedMaterial: {fileID: -2092495596972188869, guid: 9faa8f265f950694781066688080b03a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
