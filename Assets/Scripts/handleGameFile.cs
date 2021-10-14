@@ -11,12 +11,16 @@ public class handleGameFile : MonoBehaviour
     public float[] scoring = new float[2];
 
     public Text winner;
+    public Text FinishHim;
     public GameObject blood;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         winner.text = " ";
+        FinishHim.text = " ";
         blood.SetActive(false);
     }
 
@@ -30,11 +34,27 @@ public class handleGameFile : MonoBehaviour
         {
             winner.text = "Player 2 Wins";
             blood.SetActive(true);
+            if (!players[0].GetComponent<playerController>().isFinished)
+            {
+                FinishHim.text = "FINISH THEM";
+            }
+            else
+            {
+                FinishHim.text = "BRUTALITY";
+            }
         }
         else if(scoring[1] > 4)
         {
             winner.text = "Player 1 Wins";
             blood.SetActive(true);
+            if (!players[1].GetComponent<playerController>().isFinished)
+            {
+                FinishHim.text = "FINISH THEM";
+            }
+            else
+            {
+                FinishHim.text = "BRUTALITY";
+            }
         }
     }
 }
