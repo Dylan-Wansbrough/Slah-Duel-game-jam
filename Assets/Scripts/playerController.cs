@@ -36,6 +36,8 @@ public class playerController : MonoBehaviour
 
 
     public AudioSource[] aSource;
+
+    bool playSheathOnce;
     
 
 
@@ -72,7 +74,9 @@ public class playerController : MonoBehaviour
                     m_SpriteRenderer.sprite = sprites[3];
                     aniamtionTime = time + 0.3f; //block animation lasts for a small period
                     isBlocking = true;
+                    playSheathOnce = true;
                     cooldown = time + 0.7f;
+                    aSource[5].Play();
                 }
                 else if (Input.GetKeyDown(keypressed[0]))
                 {
@@ -82,14 +86,17 @@ public class playerController : MonoBehaviour
                         m_SpriteRenderer.sprite = sprites[1];
                         aniamtionTime = time + 0.3f;
                         isFaking = true;
+                        playSheathOnce = true;
                         timeSincePress = time; //last time the player pressed attack key
-                        aSource[1].Play();
+                        aSource[4].Play();
                     }
                     else
                     {
+                        aSource[1].Play();
                         Debug.Log("attack");
                         isAttacking = true;
                         isFaking = false;
+                        playSheathOnce = true;
                         m_SpriteRenderer.sprite = sprites[2];
                         aniamtionTime = time + 0.5f;
                         cooldown = time + 0.6f;
