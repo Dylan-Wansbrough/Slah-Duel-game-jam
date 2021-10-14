@@ -13,7 +13,7 @@ public class handleGameFile : MonoBehaviour
     public Text winner;
     public Text FinishHim;
     public GameObject blood;
-
+    public Canvas gameOverCanvas;
 
 
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class handleGameFile : MonoBehaviour
             else
             {
                 FinishHim.text = "BRUTALITY";
+                gameOverCanvas.gameObject.SetActive(true);
             }
         }
         else if(scoring[1] > 4)
@@ -54,6 +55,7 @@ public class handleGameFile : MonoBehaviour
             else
             {
                 FinishHim.text = "BRUTALITY";
+                gameOverCanvas.gameObject.SetActive(true);
             }
         }
     }
