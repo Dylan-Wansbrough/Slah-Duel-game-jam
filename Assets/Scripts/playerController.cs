@@ -38,7 +38,9 @@ public class playerController : MonoBehaviour
     public AudioSource[] aSource;
 
     bool playSheathOnce;
-    
+
+    public Animation anim;
+
 
 
     // Start is called before the first frame update
@@ -128,6 +130,7 @@ public class playerController : MonoBehaviour
                         OtherPlayer.GetComponent<playerController>().timesHit += 1;
                         OtherPlayer.GetComponent<playerController>().aniamtionTime = time + 0.9f;
                         //sound effects
+                        anim.Play("screenshake");
                         aSource[0].Play();
                         if (OtherPlayer.GetComponent<playerController>().isDead)
                         {

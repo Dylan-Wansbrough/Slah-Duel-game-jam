@@ -611,6 +611,7 @@ MonoBehaviour:
   - {fileID: 54947318}
   - {fileID: 920936531}
   - {fileID: 262003415}
+  anim: {fileID: 519420030}
 --- !u!4 &469970562
 Transform:
   m_ObjectHideFlags: 0
@@ -636,6 +637,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -651,6 +653,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!111 &519420030
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: aafe0f1b469f5e8488eda6c6ca433873, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: aafe0f1b469f5e8488eda6c6ca433873, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1734,6 +1752,7 @@ MonoBehaviour:
   - {fileID: 54947318}
   - {fileID: 920936531}
   - {fileID: 262003415}
+  anim: {fileID: 519420030}
 --- !u!4 &2029495434
 Transform:
   m_ObjectHideFlags: 0
