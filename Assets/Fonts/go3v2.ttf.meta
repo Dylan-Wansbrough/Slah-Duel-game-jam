@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b98e61b60ea6b4a42bf13bda9d7075f4
+guid: 737bbd77384dc7d4c8aaf9afa776c734
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Kashima Brush Demo
+  - Gang of Three
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
