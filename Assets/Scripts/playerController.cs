@@ -33,11 +33,11 @@ public class playerController : MonoBehaviour
     //player life
     public float timesHit;
     public bool isDead;
-
+    public GameObject[] blood;
 
     public AudioSource[] aSource;
 
-    bool playSheathOnce;
+    bool playblood;
 
     public Animation anim;
 
@@ -76,7 +76,6 @@ public class playerController : MonoBehaviour
                     m_SpriteRenderer.sprite = sprites[3];
                     aniamtionTime = time + 0.3f; //block animation lasts for a small period
                     isBlocking = true;
-                    playSheathOnce = true;
                     cooldown = time + 0.7f;
                     aSource[5].Play();
                 }
@@ -88,7 +87,6 @@ public class playerController : MonoBehaviour
                         m_SpriteRenderer.sprite = sprites[1];
                         aniamtionTime = time + 0.3f;
                         isFaking = true;
-                        playSheathOnce = true;
                         timeSincePress = time; //last time the player pressed attack key
                         aSource[4].Play();
                     }
@@ -97,8 +95,8 @@ public class playerController : MonoBehaviour
                         aSource[1].Play();
                         Debug.Log("attack");
                         isAttacking = true;
+                        isBlocking = false; ;
                         isFaking = false;
-                        playSheathOnce = true;
                         m_SpriteRenderer.sprite = sprites[2];
                         aniamtionTime = time + 0.5f;
                         cooldown = time + 1f;
@@ -120,6 +118,7 @@ public class playerController : MonoBehaviour
                         cooldown = time + 0.7f; //time penalty for blocking them
                         aniamtionTime = time + 0.8f;
                         aSource[2].Play();
+                        OtherPlayer.GetComponent<playerController>().cooldown = 0f;
                     }
                     else
                     {
@@ -130,6 +129,14 @@ public class playerController : MonoBehaviour
                         OtherPlayer.GetComponent<playerController>().cooldown = cooldown;
                         OtherPlayer.GetComponent<playerController>().timesHit += 1;
                         OtherPlayer.GetComponent<playerController>().aniamtionTime = time + 0.9f;
+                        if (playerNumber == 1)
+                        {
+                            Instantiate(blood[0], new Vector3(OtherPlayer.transform.position.x + 0.4f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.Euler(0, 180, 0));
+                        }
+                        else
+                        {
+                            Instantiate(blood[0], new Vector3(OtherPlayer.transform.position.x - 0.4f, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity);
+                        }
                         //sound effects
                         anim.Play("screenshake");
                         aSource[0].Play();
@@ -141,14 +148,9 @@ public class playerController : MonoBehaviour
                 }
             }
 
-            //if the other player is stunned all CD are reset to allow for counter attack
-            if (OtherPlayer.GetComponent<playerController>().isStunned)
-            {
-                cooldown = 0;
-            }
-
             if (isHit)
             {
+                isStunned = false;
                 m_SpriteRenderer.sprite = sprites[5];
             }
 
@@ -175,6 +177,20 @@ public class playerController : MonoBehaviour
         {
             if (isFinished)
             {
+                if (!playblood)
+                {   
+                    if(playerNumber == 1)
+                    {
+                        Instantiate(blood[1], new Vector3(gameObject.transform.position.x - 0.4f, gameObject.transform.position.y - 0.02f, gameObject.transform.position.z), Quaternion.identity);
+                    }
+                    else
+                    {
+                        Instantiate(blood[1], new Vector3(gameObject.transform.position.x + 0.4f, gameObject.transform.position.y - 0.02f, gameObject.transform.position.z), Quaternion.identity);
+                    }
+                    
+                    playblood = true;
+                }
+                
                 m_SpriteRenderer.sprite = sprites[7];
             }
         }
