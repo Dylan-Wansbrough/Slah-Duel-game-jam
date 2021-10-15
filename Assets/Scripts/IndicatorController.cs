@@ -10,7 +10,7 @@ public class IndicatorController : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        pointer.transform.position = new Vector3(869.1f, pointerY, 1f);
+        pointer.transform.position = new Vector3(-84.8f, pointerY, 1f);
     }
 
 }

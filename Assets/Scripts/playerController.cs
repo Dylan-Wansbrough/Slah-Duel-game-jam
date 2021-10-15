@@ -119,6 +119,7 @@ public class playerController : MonoBehaviour
                         aniamtionTime = time + 0.8f;
                         aSource[2].Play();
                         OtherPlayer.GetComponent<playerController>().cooldown = 0f;
+                        OtherPlayer.GetComponent<playerController>().aniamtionTime = 0f;
                     }
                     else
                     {
