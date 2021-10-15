@@ -101,7 +101,7 @@ public class playerController : MonoBehaviour
                         playSheathOnce = true;
                         m_SpriteRenderer.sprite = sprites[2];
                         aniamtionTime = time + 0.5f;
-                        cooldown = time + 0.6f;
+                        cooldown = time + 1f;
                         blockWindow = time + 0.2f;
                     }
                 }
@@ -117,8 +117,8 @@ public class playerController : MonoBehaviour
                         isAttacking = false;
                         isStunned = true;
                         m_SpriteRenderer.sprite = sprites[4];
-                        cooldown = time + 0.6f; //time penalty for blocking them
-                        aniamtionTime = time + 0.6f;
+                        cooldown = time + 0.7f; //time penalty for blocking them
+                        aniamtionTime = time + 0.8f;
                         aSource[2].Play();
                     }
                     else
@@ -126,6 +126,7 @@ public class playerController : MonoBehaviour
                         isAttacking = false;
                         cooldown = time + 1f;
                         OtherPlayer.GetComponent<playerController>().isHit = true;
+                        OtherPlayer.GetComponent<playerController>().isAttacking = false;
                         OtherPlayer.GetComponent<playerController>().cooldown = cooldown;
                         OtherPlayer.GetComponent<playerController>().timesHit += 1;
                         OtherPlayer.GetComponent<playerController>().aniamtionTime = time + 0.9f;
